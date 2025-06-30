@@ -1,7 +1,6 @@
 {
   "name": "nine-year-anniversary",
   "version": "0.1.0",
-  "homepage": "https://clementesepulveda.github.io/nine-year-anniversary",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
