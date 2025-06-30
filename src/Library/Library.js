@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import './Library.css';
+import Tilt from 'react-parallax-tilt';
 
 export default function LibraryShower() {
     const [showLibrary, setShowLibrary] = useState(false);
@@ -9,9 +10,9 @@ export default function LibraryShower() {
         <>
             <div className={`library-button`}>
                 <div className={`library-button-icon ${showLibrary ? 'library-down' : ''}`}>
-                    <svg 
+                    <svg
                         onClick={() => setShowLibrary(!showLibrary)} width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                 </div>
                 {/* <button onClick={() => setShowLibrary(!showLibrary)}>
@@ -62,12 +63,14 @@ const Library = () => {
 
 const LibraryCard = ({ card }) => {
     return (
-        <div className="library-card">
-            <div className="library-card-image-container">
-                <img src={card.url} alt={card.description} />
+        <Tilt glareEnable={true} glareMaxOpacity={0.45} scale={1.05}>
+            <div className="library-card">
+                <div className="library-card-image-container">
+                    <img src={card.url} alt={card.description} />
+                </div>
+                <div className="library-card-date">{card.date}</div>
+                <div>{card.description}</div>
             </div>
-            <div className="library-card-date">{card.date}</div>
-            <div>{card.description}</div>
-        </div>
+        </Tilt>
     );
 };
