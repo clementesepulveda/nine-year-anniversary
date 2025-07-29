@@ -1,18 +1,15 @@
 import React from "react";
-import LibraryShower from "./Library/Library";
-import { CardCounter, Frame, Picture } from "./Frame/Frame";
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import All from "./Pages/All";
+import Index from "./Pages";
 
 export default function App() {
   return (
-    <CardCounter>
-      <div style={{ width: '100vw', height: '100vh', backgroundColor: 'ble' }}>
-        <LibraryShower />
-
-        <Frame>
-          <Picture url="/images/000.jpg" />
-        </Frame>
-      </div>
-    </CardCounter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/all" element={<All />} />
+        <Route path="/*" element={<Index />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
