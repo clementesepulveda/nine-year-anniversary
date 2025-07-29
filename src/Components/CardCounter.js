@@ -4,22 +4,25 @@ export const CardCounter = ({ children }) => {
     const [hasLoadedNewCard, setHasLoadedNewCard] = useState(false);
 
     useEffect(() => {
-        const lastDate = localStorage.getItem('last-date-open');
+        let lastDate = localStorage.getItem('last-date-open');
         let cards = localStorage.getItem('cards');
         const currentCardIndex = localStorage.getItem('current-card-index');
 
-        if ((!cards )|| JSON.parse(cards).length === 0) {
-            cards = [{ id: '0', url: '/images/000.jpg', date: '2025-01-01', description: 'DEBUG 3' }];
-            localStorage.setItem('cards', JSON.stringify(cards));
+        if ((!cards) || JSON.parse(cards).length === 0) {
+            cards = JSON.stringify(
+                [{ id: '0', url: '/images/000.jpg', date: '2025-01-01', description: 'DEBUG 3' }]
+            );
+            localStorage.setItem('cards', cards);
         }
 
         if (!lastDate) {
-            updateLastDate();
+            lastDate = new Date().toLocaleDateString('en-US');
+            localStorage.setItem('last-date-open', lastDate);
         }
 
         if (!currentCardIndex || currentCardIndex > JSON.parse(cards).length - 1) {
             const cardsLength = cards ? JSON.parse(cards).length : 0;
-            localStorage.setItem('current-card-index', (cardsLength - 1)%365);
+            localStorage.setItem('current-card-index', (cardsLength - 1) % 365);
         }
 
 
