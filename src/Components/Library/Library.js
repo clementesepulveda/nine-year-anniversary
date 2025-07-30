@@ -20,14 +20,6 @@ export default function LibraryShower() {
                 </button> */}
             </div>
 
-            {/* {showLibrary && (
-                <div
-                    className={`library-container ${showLibrary ? 'show' : ''}`}
-                >
-                    {library}
-                </div>
-            )} */}
-
             <div className={`library-container ${showLibrary ? 'show' : 'not-show'}`}>
                 {library}
             </div>
@@ -77,7 +69,7 @@ const TiltingLibraryCard = ({ card }) => {
     return (<>
         {isClicked ?
             <Tilt glareEnable={true} glareMaxOpacity={0.45} scale={1.05}>
-                <div className="library-card" onClick={handleClick}>
+                <div className="library-card" onClick={handleClick} style={{ scale: isClicked ? 1.1 : 1 }}>
                     <div className="library-card-image-container">
                         <img src={fullUrl} alt={card.description} />
                     </div>

@@ -43,8 +43,52 @@ export const Picture = ({ card }) => {
     const fullUrl = baseUrl + card.url;
 
     return (
-        <div style={{ width: '100px', height: '100px', backgroundColor: 'pink' }}>
-            <img src={fullUrl} alt={card.url} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div style={{
+            height: '100%',
+            width: '100%',
+            position: 'relative', // Required for absolute positioning of pseudo-elements
+        }}>
+            <img src={fullUrl} alt={card.url} style={{
+                position: 'absolute',
+                top: 0,
+                bottom: 0,
+                left: -30,
+                right: 0,
+                // maxWidth: '200px',
+                width: '90%',
+                margin: 'auto',
+                background: '#fff',
+                padding: '30px',
+                borderStyle: 'solid',
+                borderWidth: '15px',
+                borderTopColor: '#333333',
+                borderRightColor: '#000000',
+                borderBottomColor: '#333333',
+                borderLeftColor: '#000000',
+                boxShadow: '2px 2px 4px rgba(0,0,0,.6)',
+                '::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: '-15px',
+                    left: '-15px',
+                    width: '50%',
+                    height: '2px',
+                    background: '#333',
+                    transform: 'rotate(45deg)',
+                    transformOrigin: 'top left'
+                },
+                '::after': {
+                    content: '""',
+                    position: 'absolute',
+                    top: '-15px',
+                    right: '-15px',
+                    width: '50%',
+                    height: '2px',
+                    background: '#333',
+                    transform: 'rotate(-45deg)',
+                    transformOrigin: 'top right'
+                }
+            }} />
         </div>
     );
 }
