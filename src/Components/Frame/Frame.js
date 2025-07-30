@@ -44,7 +44,7 @@ export const Picture = ({ card }) => {
 
     return (
         <div style={{ width: '100px', height: '100px', backgroundColor: 'pink' }}>
-            <img src={fullUrl} alt="image" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src={fullUrl} alt={card.url} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
     );
 }
