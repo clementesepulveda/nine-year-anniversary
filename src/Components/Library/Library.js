@@ -62,7 +62,7 @@ const TiltingLibraryCard = ({ card }) => {
         if (!isClicked) {
             document.body.style.overflow = 'hidden';
         } else {
-            document.body.style.overflow = 'scroll'; // Or 'auto'
+            document.body.style.overflowY = 'auto';
         }
     }
 
@@ -70,17 +70,14 @@ const TiltingLibraryCard = ({ card }) => {
     const fullUrl = baseUrl + card.url;
 
     return (<>
-        {isClicked ?
-            <Tilt glareEnable={true} glareMaxOpacity={0.45} scale={1.05}>
-                <div className="library-card" onClick={handleClick} style={{ scale: isClicked ? 1.1 : 1 }}>
-                    <div className="library-card-image-container">
-                        <img src={fullUrl} alt={card.description} />
-                    </div>
-                    <br />
-                    {/* <div className="library-card-date">{card.date}</div>
-                <div>{card.description}</div> */}
-                </div>
-            </Tilt> :
+        <Tilt
+            glareEnable={isClicked}
+            glareMaxOpacity={isClicked ? 0.45 : 0}
+            style={{ scale: isClicked ? 1.1 : 1, zIndex: isClicked ? 1000 : 1 }}
+            // resets to 0 when unclicked
+            tiltMaxAngleX={isClicked ? 20 : 0}
+            tiltMaxAngleY={isClicked ? 20 : 0}
+        >
             <div className="library-card" onClick={handleClick}>
                 <div className="library-card-image-container">
                     <img src={fullUrl} alt={card.description} />
@@ -88,7 +85,8 @@ const TiltingLibraryCard = ({ card }) => {
                 <br />
                 {/* <div className="library-card-date">{card.date}</div>
                 <div>{card.description}</div> */}
-            </div>}
+            </div>
+        </Tilt>
     </>
     );
 };

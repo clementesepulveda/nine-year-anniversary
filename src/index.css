@@ -22,3 +22,15 @@ body {
   background-attachment: fixed;
   background-size: cover;
 }
+
+body {
+  overflow-x:hidden;
+  overflow-y: scroll;
+  scrollbar-width: 0px; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
