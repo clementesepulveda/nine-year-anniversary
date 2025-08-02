@@ -48,34 +48,37 @@ export const CardCounter = ({ children }) => {
     }, []);
 
     const updateTotalCards = async () => {
-        let current = 0;
-        let found = 0;
+        // manually doing it
+        // dynamic way was too slow
+        return 224;
+        // let current = 0;
+        // let found = 0;
 
-        const checkNext = async () => {
-            if (current > 500) {
-                return found;
-            }
+        // const checkNext = async () => {
+        //     if (current > 500) {
+        //         return found;
+        //     }
 
-            const fileName = `${String(current).padStart(3, '0')}`;
-            const url = `/nine-year-anniversary/images/${fileName}.jpg`;
+        //     const fileName = `${String(current).padStart(3, '0')}`;
+        //     const url = `/nine-year-anniversary/images/${fileName}.jpg`;
 
-            try {
-                const res = await fetch(url, { method: 'HEAD' }); // faster than GET
-                const contentType = res.headers.get('content-type');
-                if (contentType === 'image/jpeg') {
-                    found++;
-                    current++;
-                    return await checkNext();
-                } else {
-                    return found;
-                }
-            } catch {
-                return found;
-            }
-        };
+        //     try {
+        //         const res = await fetch(url, { method: 'HEAD' }); // faster than GET
+        //         const contentType = res.headers.get('content-type');
+        //         if (contentType === 'image/jpeg') {
+        //             found++;
+        //             current++;
+        //             return await checkNext();
+        //         } else {
+        //             return found;
+        //         }
+        //     } catch {
+        //         return found;
+        //     }
+        // };
 
-        const total = await checkNext();
-        return total;
+        // const total = await checkNext();
+        // return total;
     }
 
     const updateLastDate = () => {
