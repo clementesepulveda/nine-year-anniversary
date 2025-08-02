@@ -29,17 +29,20 @@ export default function LibraryShower() {
 
 const Library = () => {
     const [cards, setCards] = useState([]);
+    const [totalCards, setTotalCards] = useState(0);
 
     useEffect(() => {
         const storageCards = localStorage.getItem('cards');
+        const totalCards = localStorage.getItem('total-cards');
 
         setCards(JSON.parse(storageCards).reverse());
+        setTotalCards(totalCards);
     }, []);
 
     return (
         <div>
             <div className="library-title">
-                {cards.length} / 365
+                {cards.length} / {totalCards}
             </div>
             <div className="library-cards">
                 {cards.map((card) => (
